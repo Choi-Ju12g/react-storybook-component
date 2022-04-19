@@ -1,6 +1,6 @@
-import { CSSProperties, useState } from 'react';
-import styled, {css} from 'styled-components';
-import { ReactElement } from 'react';
+import { CSSProperties, useState , ReactElement} from 'react';
+import styled from 'styled-components';
+
 
 export interface NavMenuViewProps {
     onClick?: (e?: React.MouseEvent) => void;
@@ -65,30 +65,43 @@ export default function NavMenuView({
 
     function selectedMenuHandler(index: number) {
         setCurrentIndex(index);
-
     }
 
     return (
-        <div>
-            <NavMenuWrapper>
+        <NavWrapper>
+            <NavTitleWrapper>
                 {initNavMenuTitle(contents)}
-            </NavMenuWrapper>
+            </NavTitleWrapper>
             <MenuContentWrapper>
                 {initNavMenuContents(contents)}
             </MenuContentWrapper>
-        </div>
+        </NavWrapper>
     );
 }
 
-const NavMenuWrapper = styled.ul`
+const NavWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    
+    width: 100vw;
+    padding: 0px 16px;
+`;
+
+const NavTitleWrapper = styled.ul`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    list-style: none;
     height: 22px;
-    width: 328px;
+    width: 100%;
     margin-top: 10px;
-    margin-bottom: 8px;
-
+    border-bottom: solid 2px rgba(37, 40, 47, 0.1);
+    padding-bottom: 6px;
     .focused{
         color:#22CC88;
         border-bottom: solid 2px #22CC88;
@@ -100,11 +113,10 @@ const NavMenu = styled.li`
     flex-basis: 100%;
     height: 22px;
     padding-bottom: 6px;
-    border-bottom: solid 2px rgba(37, 40, 47, 0.1);
+    font-size: 14px;
     font-family: 'Noto Sans CJK KR';
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
     line-height: 22px;
     text-align: center;
     color: #25282F;
@@ -114,5 +126,5 @@ const MenuContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 328px;
+  width: 100%;
 `;

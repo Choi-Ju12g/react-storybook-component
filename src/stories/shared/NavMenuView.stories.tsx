@@ -1,18 +1,17 @@
-import React, { Children } from 'react';
+import React from 'react';
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import NavMenuView, {NavMenuViewProps} from '../components/NavMenuView';
-import { useArgs } from '@storybook/client-api';
+
 
 export default {
-    title: 'miridi/shared/NavMenuView',
+    title: 'shared/NavMenuView',
     component: NavMenuView
 } as ComponentMeta<typeof NavMenuView>;
 
-const Template: ComponentStory<typeof NavMenuView> = (args) =>
-    <NavMenuView {...args} ></NavMenuView>;
+const Template: ComponentStory<typeof NavMenuView> = (args) => <NavMenuView {...args} ></NavMenuView>;
 
 export const Primary = Template.bind({});
-const arr = [0, 1, 2];
+
 Primary.args = {
     menuCount: 3,
     defaultIndex: 1,
